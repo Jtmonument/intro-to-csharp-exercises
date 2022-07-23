@@ -1,5 +1,4 @@
 ﻿using System;
-using static System.Console;
 
 namespace Exercise1
 {
@@ -7,17 +6,15 @@ namespace Exercise1
     {
         static void Main(string[] args)
         {
-            Write("Enter a number between 1 and 10: ");
-            int number = Convert.ToInt32(ReadLine());
-            WriteLine(number);
-            if (number >= 1 && number <= 10)
+            int sum = 0;
+            for (int i = 0; i < 101; i++)
             {
-                WriteLine("\nValid");
+                if (i % 3 == 0)
+                {
+                    sum++;
+                }
             }
-            else
-            {
-                WriteLine("\nInvalid");
-            }
+            Console.WriteLine(sum);
         }
     }
 }
