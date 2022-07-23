@@ -8,7 +8,7 @@ namespace Exercise1
         static void Main(string[] args)
         {
             string path = "../../../../kyrgyz_election.txt";
-            var words = File.ReadAllText(path).Split(' ');
+            var words = File.ReadAllText(path).Replace("\n", " ").Split(' ');
             Console.WriteLine(words.Length);
         }
     }
