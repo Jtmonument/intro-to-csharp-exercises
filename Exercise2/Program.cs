@@ -7,11 +7,23 @@ namespace Exercise2
     {
         static void Main(string[] args)
         {
-            Write("Enter first number: ");
-            int firstNumber = Convert.ToInt32(Console.ReadLine());
-            Write("Enter second number: ");
-            int secondNumber = Convert.ToInt32(Console.ReadLine());
-            WriteLine(firstNumber > secondNumber ? firstNumber : secondNumber);
+            int sum = 0;
+            bool running = true;
+            while (running)
+            {
+                int number;
+                Write("Enter input: ");
+                string input = ReadLine();
+                if (int.TryParse(input, out number))
+                {
+                    sum += number;
+                }
+                else if (input.Equals("ok"))
+                {
+                    WriteLine("Sum: {0}", sum);
+                    running = false;
+                }
+            }
         }
     }
 }
