@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using static System.Console;
 
 namespace Exercise4
 {
@@ -8,29 +7,11 @@ namespace Exercise4
     {
         static void Main(string[] args)
         {
-            bool running = true;
-            var numbers = new List<int>();
-            while (running)
+            Console.Write("Enter words: ");
+            string[] words = Console.ReadLine().ToLower().Split(' ');
+            foreach (string word in words)
             {
-                Console.Write("Enter input: ");
-                int number;
-                string input = Console.ReadLine();
-                if (int.TryParse(input, out number))
-                {
-                    if (!numbers.Contains(number))
-                    {
-                        numbers.Add(number);
-                    }
-                }
-                else if (input.Equals("Quit"))
-                {
-                    running = false;
-                }
-            }
-
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
+                Console.Write(char.ToUpper(word[0]) + word.Substring(1));
             }
         }
     }
