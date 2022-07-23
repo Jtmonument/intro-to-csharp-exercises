@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Exercise2
 {
@@ -6,24 +7,17 @@ namespace Exercise2
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter numbers: ");
-            string[] input = Console.ReadLine().Split('-');
-            if (input.Length == 0)
+            string path = "../../../../kyrgyz_election.txt";
+            var words = File.ReadAllText(path).Replace("\n", " ").Split(' ');
+            string longestWord = words[0];
+            foreach (var word in words)
             {
-                Environment.Exit(0);
-            }
-
-            var numbers = new int[input.Length];
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                int number = Convert.ToInt32(input[i]);
-                if (Array.Exists(numbers, num => num == number))
+                if (word.Length > longestWord.Length)
                 {
-                    Console.WriteLine("Duplicate");
-                    break;
+                    longestWord = word;
                 }
-                numbers[i] = number;
             }
+            Console.WriteLine(longestWord);
         }
     }
 }
