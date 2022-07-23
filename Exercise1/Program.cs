@@ -7,40 +7,34 @@ namespace Exercise1
     {
         static void Main(string[] args)
         {
-            bool running = true;
-            var names = new List<string>();
-            while (running)
+            Console.Write("Enter numbers: ");
+            string[] input = Console.ReadLine().Split("-");
+            bool consecutive = true;
+            int previous = 0;
+            foreach (string number in input)
             {
-                Console.Write("Enter a name: ");
-                string input = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(input))
+                int num = Convert.ToInt32(number);
+                if (Array.IndexOf(input, number) == 0)
                 {
-                    names.Add(input);
+                    previous = num;
+                    continue;
                 }
-                else
+
+                if (Math.Abs(num - previous) != 1)
                 {
-                    running = false;
+                    consecutive = false;
+                    break;
                 }
+                previous = num;
             }
 
-            if (names.Count > 2)
+            if (consecutive)
             {
-                if (names.Count > 3)
-                {
-                    Console.WriteLine("{0}, {1} and {2} others like your post.", names[0], names[1], names.Count - 2);
-                }
-                else
-                {
-                    Console.WriteLine("{0}, {1} and {2} other like your post.", names[0], names[1], names.Count - 2);
-                }
+                Console.WriteLine("Consecutive");
             }
-            else if (names.Count == 2)
+            else
             {
-                Console.WriteLine("{0} and {1} like your post.", names[0], names[1]);
-            }
-            else if (names.Count == 1)
-            {
-                Console.WriteLine("{0} likes your post.", names[0]);
+                Console.WriteLine("Not Consecutive");
             }
         }
     }
