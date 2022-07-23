@@ -7,23 +7,22 @@ namespace Exercise4
     {
         static void Main(string[] args)
         {
-            Write("Enter the speed limit: ");
-            int speedLimit = Convert.ToInt32(ReadLine());
-            Write("Enter the speed of the car: ");
-            int carSpeed = Convert.ToInt32(ReadLine());
-            if (carSpeed > speedLimit)
+            int numberToGuess = new Random().Next(1, 11);
+            for (int i = 0; i < 4; i++)
             {
-                int points = (carSpeed - speedLimit) / 5;
-                WriteLine("{0} demerit points", points);
-                if (points > 12)
+                Write("Guess a number: ");
+                int guess = Convert.ToInt32(ReadLine());
+                if (guess == numberToGuess)
                 {
-                    WriteLine("License Suspended.");
+                    WriteLine("You won!");
+                    Environment.Exit(0);
+                }
+                else if (i < 3)
+                {
+                    WriteLine("Wrong! Try again!");
                 }
             }
-            else
-            {
-                WriteLine("Ok");
-            }
+            WriteLine("You lost!");
         }
     }
 }
