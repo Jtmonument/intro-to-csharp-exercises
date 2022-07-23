@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using static System.Console;
 
 namespace Exercise3
 {
@@ -8,25 +7,15 @@ namespace Exercise3
     {
         static void Main(string[] args)
         {
-            var numbers = new List<int>();
-            while (numbers.Count < 5)
+            Console.Write("Enter a time: ");
+            string strTime;
+            if (TimeSpan.TryParse(Console.ReadLine(), out TimeSpan time))
             {
-                Console.Write("Enter a number: ");
-                int number = Convert.ToInt32(Console.ReadLine());
-                if (numbers.Contains(number))
-                {
-                    Console.WriteLine("Error: You already entered that number! Try again!");
-                }
-                else
-                {
-                    numbers.Add(number);
-                }
+                Console.WriteLine("Ok");
             }
-
-            numbers.Sort();
-            foreach (int number in numbers)
+            else
             {
-                Console.WriteLine(number);
+                Console.WriteLine("Invalid Time");
             }
         }
     }
