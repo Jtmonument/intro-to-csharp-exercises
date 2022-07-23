@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Exercise5
 {
@@ -6,18 +7,31 @@ namespace Exercise5
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter numbers: ");
-            string input = Console.ReadLine();
-            int maxNumber = int.MinValue;
-            foreach (string character in input.Replace(" ", "").Trim().Split(","))
+            bool running = true;
+            while (running)
             {
-                int numParsed;
-                if (int.TryParse(character, out numParsed) && numParsed > maxNumber)
+                string[] list = Console.ReadLine().Replace(" ", "").Trim().Split(",");
+                var numbers = new List<int>();
+                foreach (string input in list)
                 {
-                    maxNumber = numParsed;
+                    int number;
+                    if (int.TryParse(input, out number))
+                    {
+                        numbers.Add(number);
+                    }
                 }
+                if (numbers.Count < 5)
+                {
+                    Console.WriteLine("Invalid List! Try again!");
+                    continue;
+                }
+                numbers.Sort();
+                foreach (int num in numbers.GetRange(0, 3))
+                {
+                    Console.WriteLine(num);
+                }
+                running = false;
             }
-            Console.WriteLine(maxNumber);
         }
     }
 }
