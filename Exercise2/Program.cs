@@ -1,5 +1,4 @@
 ﻿using System;
-using static System.Console;
 
 namespace Exercise2
 {
@@ -7,22 +6,12 @@ namespace Exercise2
     {
         static void Main(string[] args)
         {
-            int sum = 0;
-            bool running = true;
-            while (running)
+            Console.Write("Enter your name: ");
+            char[] name = Console.ReadLine().ToCharArray();
+            Array.Reverse(name);
+            foreach (char ch in name)
             {
-                int number;
-                Write("Enter input: ");
-                string input = ReadLine();
-                if (int.TryParse(input, out number))
-                {
-                    sum += number;
-                }
-                else if (input.Equals("ok"))
-                {
-                    WriteLine("Sum: {0}", sum);
-                    running = false;
-                }
+                Console.WriteLine(ch);
             }
         }
     }
