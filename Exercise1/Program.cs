@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 
 namespace Exercise1
 {
@@ -7,35 +7,9 @@ namespace Exercise1
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter numbers: ");
-            string[] input = Console.ReadLine().Split("-");
-            bool consecutive = true;
-            int previous = 0;
-            foreach (string number in input)
-            {
-                int num = Convert.ToInt32(number);
-                if (Array.IndexOf(input, number) == 0)
-                {
-                    previous = num;
-                    continue;
-                }
-
-                if (Math.Abs(num - previous) != 1)
-                {
-                    consecutive = false;
-                    break;
-                }
-                previous = num;
-            }
-
-            if (consecutive)
-            {
-                Console.WriteLine("Consecutive");
-            }
-            else
-            {
-                Console.WriteLine("Not Consecutive");
-            }
+            string path = "../../../../kyrgyz_election.txt";
+            var words = File.ReadAllText(path).Split(' ');
+            Console.WriteLine(words.Length);
         }
     }
 }
