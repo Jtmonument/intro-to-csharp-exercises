@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static System.Console;
 
 namespace Exercise4
@@ -7,22 +8,30 @@ namespace Exercise4
     {
         static void Main(string[] args)
         {
-            int numberToGuess = new Random().Next(1, 11);
-            for (int i = 0; i < 4; i++)
+            bool running = true;
+            var numbers = new List<int>();
+            while (running)
             {
-                Write("Guess a number: ");
-                int guess = Convert.ToInt32(ReadLine());
-                if (guess == numberToGuess)
+                Console.Write("Enter input: ");
+                int number;
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out number))
                 {
-                    WriteLine("You won!");
-                    Environment.Exit(0);
+                    if (!numbers.Contains(number))
+                    {
+                        numbers.Add(number);
+                    }
                 }
-                else if (i < 3)
+                else if (input.Equals("Quit"))
                 {
-                    WriteLine("Wrong! Try again!");
+                    running = false;
                 }
             }
-            WriteLine("You lost!");
+
+            foreach (var number in numbers)
+            {
+                Console.WriteLine(number);
+            }
         }
     }
 }
