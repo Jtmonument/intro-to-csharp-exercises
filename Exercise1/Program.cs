@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Exercise1
 {
@@ -6,15 +7,41 @@ namespace Exercise1
     {
         static void Main(string[] args)
         {
-            int sum = 0;
-            for (int i = 0; i < 101; i++)
+            bool running = true;
+            var names = new List<string>();
+            while (running)
             {
-                if (i % 3 == 0)
+                Console.Write("Enter a name: ");
+                string input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
                 {
-                    sum++;
+                    names.Add(input);
+                }
+                else
+                {
+                    running = false;
                 }
             }
-            Console.WriteLine(sum);
+
+            if (names.Count > 2)
+            {
+                if (names.Count > 3)
+                {
+                    Console.WriteLine("{0}, {1} and {2} others like your post.", names[0], names[1], names.Count - 2);
+                }
+                else
+                {
+                    Console.WriteLine("{0}, {1} and {2} other like your post.", names[0], names[1], names.Count - 2);
+                }
+            }
+            else if (names.Count == 2)
+            {
+                Console.WriteLine("{0} and {1} like your post.", names[0], names[1]);
+            }
+            else if (names.Count == 1)
+            {
+                Console.WriteLine("{0} likes your post.", names[0]);
+            }
         }
     }
 }
