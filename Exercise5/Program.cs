@@ -7,31 +7,18 @@ namespace Exercise5
     {
         static void Main(string[] args)
         {
-            bool running = true;
-            while (running)
+            Console.Write("Enter a word: ");
+            string word = Console.ReadLine();
+            string vowels = "aeiou";
+            int count = 0;
+            foreach (char ch in word)
             {
-                string[] list = Console.ReadLine().Replace(" ", "").Trim().Split(",");
-                var numbers = new List<int>();
-                foreach (string input in list)
+                if (vowels.Contains(ch))
                 {
-                    int number;
-                    if (int.TryParse(input, out number))
-                    {
-                        numbers.Add(number);
-                    }
+                    count++;
                 }
-                if (numbers.Count < 5)
-                {
-                    Console.WriteLine("Invalid List! Try again!");
-                    continue;
-                }
-                numbers.Sort();
-                foreach (int num in numbers.GetRange(0, 3))
-                {
-                    Console.WriteLine(num);
-                }
-                running = false;
             }
+            Console.WriteLine(count);
         }
     }
 }
