@@ -7,22 +7,14 @@ namespace Exercise3
     {
         static void Main(string[] args)
         {
-            Write("Enter the width of your image: ");
-            int width = Convert.ToInt32(ReadLine());
-            Write("Enter the height of your image: ");
-            int height = Convert.ToInt32(ReadLine());
-            if (width > height)
+            Write("Enter a number: ");
+            int number = int.Parse(Console.ReadLine());
+            int factorial = 1;
+            for (int i = 1; i <= number; i++)
             {
-                WriteLine("The image is more like a landscape.");
+                factorial *= i;
             }
-            else if (height > width)
-            {
-                WriteLine("The image is more like a portrait");
-            }
-            else 
-            {
-                WriteLine("The image is square.");
-            }
+            Console.WriteLine("{0}! = {1}", number, factorial);
         }
     }
 }
